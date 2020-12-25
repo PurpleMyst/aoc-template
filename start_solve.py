@@ -78,7 +78,6 @@ def main() -> None:
         ],
         check=True,
     )
-    subprocess.run(["git", "add", crate], check=True)
 
     src = crate_path / "src"
 
@@ -96,6 +95,7 @@ def main() -> None:
         resp.raise_for_status()
         input_f.write(resp.text)
 
+    subprocess.run(["git", "add", crate], check=True)
     webbrowser.open_new(f"https://adventofcode.com/{year}/day/{day}")
 
 
