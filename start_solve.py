@@ -78,6 +78,7 @@ def main() -> None:
         ],
         check=True,
     )
+    subprocess.run(["git", "add", crate], check=True)
 
     src = crate_path / "src"
 
