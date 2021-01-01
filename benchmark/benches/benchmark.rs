@@ -3,12 +3,7 @@ use std::time::Duration;
 use criterion::{criterion_group, criterion_main, Criterion};
 
 pub fn alldays_benchmark(c: &mut Criterion) {
-    c.bench_function("all", |b| {
-        b.iter(|| {
-            (
-            )
-        })
-    });
+    c.bench_function("all", |b| b.iter(|| ()));
 }
 
 criterion_group! {
