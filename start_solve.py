@@ -4,21 +4,26 @@ import pathlib
 import subprocess
 import webbrowser
 
+import browser_cookie3 as bc
 import requests
 import toml
 
-DESCRIPTION = "Start solving an Advent of Code day"
-
-MAIN = """fn main() {{
+MAIN = """\
+fn main() {{
     let (part1, part2) = {crate}::solve();
     println!("{{}}", part1);
     println!("{{}}", part2);
-}}"""
+}}\
+"""
 
-LIB = """#[inline]
-pub fn solve() -> (usize, usize) {{
+LIB = """\
+use std::fmt::Display;
+
+#[inline]
+pub fn solve() -> (impl Display, impl Display) {{
     todo!()
-}}"""
+}}\
+"""
 
 
 def main() -> None:
@@ -26,7 +31,7 @@ def main() -> None:
     default_day = now.day
     default_year = now.year
 
-    argp = argparse.ArgumentParser(description=DESCRIPTION)
+    argp = argparse.ArgumentParser(description="Start solving an Advent of Code day")
     argp.add_argument(
         "-d",
         "--day",
@@ -47,8 +52,7 @@ def main() -> None:
     day: int = argv.day
     year: int = argv.year
 
-    with open("session.txt") as session_f:
-        session = session_f.read().strip()
+    cookies = bc.load(domain_name="adventofcode.com")
 
     crate = f"day{day:02}"
     crate_path = pathlib.Path(crate)
@@ -90,7 +94,7 @@ def main() -> None:
     with (src / "input.txt").open("w", newline="\n") as input_f:
         resp = requests.get(
             f"https://adventofcode.com/{year}/day/{day}/input",
-            cookies={"session": session},
+            cookies=cookies,
         )
         resp.raise_for_status()
         input_f.write(resp.text)
