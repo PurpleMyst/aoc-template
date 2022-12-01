@@ -21,7 +21,7 @@ use std::fmt::Display;
 
 #[inline]
 pub fn solve() -> (impl Display, impl Display) {{
-    todo!()
+    ("TODO", "TODO")
 }}\
 """
 
@@ -77,7 +77,7 @@ def main() -> None:
             "--manifest-path",
             "benchmark/Cargo.toml",
             "--path",
-            f"../{crate}",
+            crate,
             crate,
         ],
         check=True,
