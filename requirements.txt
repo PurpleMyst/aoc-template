@@ -1,3 +1,8 @@
-browser-cookie3==0.12.1
-requests==2.25.1
+argh==0.26.2
+beautifulsoup4==4.11.1
+browser_cookie3==0.16.2
+html2text==2020.1.16
+python-dotenv==0.21.0
+requests==2.27.1
+termcolor==1.1.0
 toml==0.10.2
