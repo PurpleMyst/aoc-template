@@ -3,7 +3,7 @@ use std::time::Duration;
 use criterion::{criterion_group, criterion_main, Criterion};
 
 macro_rules! doit {
-    ($($day:ident),+$(,)?) => {
+    ($($day:ident),*$(,)?) => {
         pub fn aoc_benchmark(c: &mut Criterion) {
             $(c.bench_function(stringify!($day), |b| b.iter($day::solve));)+
             c.bench_function("all", |b| b.iter(|| ($($day::solve()),+)));
@@ -27,6 +27,4 @@ macro_rules! doit {
 }
 
 doit!(
-    day01, day02, day03, day04, day05, day06, day07, day08, day09, day10, day11, day12, day13,
-    day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25
 );

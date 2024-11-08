@@ -1,2 +1,7 @@
 target/
 session.txt
+sample_input*.txt
+*.png
+*.dot
+*.log
+.z3-trace
